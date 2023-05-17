@@ -1,0 +1,84 @@
+<%- include('../partials/header') %>
+
+    <link rel="stylesheet" href="/css/edit_user.css">
+
+    <div class="container d-flex align-items-center justify-content-center mt-5 mb-3">
+        <div class="card-header">
+            <h1 class="text-dark" style="font-size: 45px;font-weight: 600;">
+                Edit User (<%= user.name %>) 🔥
+            </h1>
+        </div>
+    </div>
+
+    <div class="container mb-5">
+        <div class="row">
+            <div class="col-lg-12 mx-auto mt-4">
+                <div class="card shadow form-wrap">
+                    <div class="card-body p-4">
+                        <form action="/update/<%= user._id %>" method="post" id="add-form">
+                            <div class="row">
+                                <div class="mb-3 col-sm">
+                                    <label for="pan"> Pan Number </label>
+                                    <input type="text" name="pan" class="form-control form-control-lg"
+                                        placeholder="Enter pan" value="<%= user.pan %>" required />
+                                </div>
+                                <div class="mb-3 col-sm">
+                                    <label for="name"> Name </label>
+                                    <input type="text" name="name" class="form-control form-control-lg"
+                                        placeholder="Enter name" value="<%= user.name %>" required />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="mb-3 col-sm">
+                                    <label for="phone">Phone</label>
+                                    <input type="tel" name="phone" class="form-control form-control-lg"
+                                        placeholder="Enter phone" value="<%= user.phone %>" required />
+                                </div>
+                                <div class="mb-3 col-sm">
+                                    <label for="email"> Email </label>
+                                    <input type="email" name="email" class="form-control form-control-lg"
+                                        placeholder="Enter email" value="<%= user.email %>" required />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="mb-3 col-sm">
+                                    <label for="dob"> DOB </label>
+                                    <input type="date" name="dob" class="form-control form-control-lg"
+                                        placeholder="Enter name" value="<%= public_date %>" required />
+                                </div>
+                                <div class="mb-3 col-sm">
+                                    <label for="unit"> Unit </label>
+                                    <input type="text" name="unit" class="form-control form-control-lg"
+                                        placeholder="Enter name" value="<%= user.unit %>" required />
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="paid"> Paid </label>
+                                <% if (user.paid==true) { %>
+                                    <select name="paid">
+                                        <option value="false">No</option>
+                                        <option value="true" selected="selected">Yes</option>
+                                    </select>
+                                    <% } else { %>
+                                        <select name="paid">
+                                            <option value="false" selected="selected">No</option>
+                                            <option value="true">Yes</option>
+                                        </select>
+                                        <% } %>
+                            </div>
+                            <!--! odl_input -->
+                            <input type="hidden" name="old_image" value="<%= user.image %>">
+                            <div class="mb-3 d-grid">
+                                <button type="submit" name="submit" class="custom-btn btn btn-primary btn-lg">
+                                    Update User
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <%- include('../partials/footer') %>

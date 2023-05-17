@@ -1,0 +1,68 @@
+<%- include('../partials/header') %>
+
+    <link rel="stylesheet" href="/css/add_user.css">
+
+    <div class="container d-flex align-items-center justify-content-center mt-5 mb-3">
+        <div class="card-header">
+            <h1 class="text-dark" style="font-size: 45px;font-weight: 600;">
+                Add New User 🔥
+            </h1>
+        </div>
+    </div>
+
+    <div class="container mb-5">
+        <div class="row">
+            <div class="col-lg-12 mx-auto mt-4">
+                <div class="card shadow form-wrap">
+                    <div class="card-body p-4">
+                        <form action="/add" method="post" id="add-form">
+                            <div class="row">
+                                <div class="mb-3 col-sm">
+                                    <label for="pan"> Pan Number </label>
+                                    <input type="text" name="pan" class="form-control form-control-lg"
+                                        placeholder="Enter pan" required />
+                                </div>
+                                <div class="mb-3 col-sm">
+                                    <label for="name"> Name </label>
+                                    <input type="text" name="name" class="form-control form-control-lg"
+                                        placeholder="Enter name" required />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="mb-3 col-sm">
+                                    <label for="phone">Phone</label>
+                                    <input type="tel" name="phone" class="form-control form-control-lg"
+                                        placeholder="Enter phone" required />
+                                </div>
+                                <div class="mb-3 col-sm">
+                                    <label for="email"> Email </label>
+                                    <input type="email" name="email" class="form-control form-control-lg"
+                                        placeholder="Enter email" required />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="mb-3 col-sm">
+                                    <label for="dob"> DOB </label>
+                                    <input type="date" name="dob" class="form-control form-control-lg"
+                                        placeholder="Enter name" required />
+                                </div>
+                                <div class="mb-3 col-sm">
+                                    <label for="unit"> Unit </label>
+                                    <input type="text" name="unit" class="form-control form-control-lg"
+                                        placeholder="Enter name" required />
+                                </div>
+                            </div>
+                            <div class="mb-3 d-grid">
+                                <button type="submit" name="submit" class="custom-btn btn btn-primary btn-lg">
+                                    Add User
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <%- include('../partials/footer') %>

@@ -1,0 +1,108 @@
+<%- include('../partials/header') %>
+
+    <link rel="stylesheet" href="/css/index.css">
+
+    <div class="container">
+        <div class="row my-4">
+            <div class="col-lg-12">
+                <% if (message) { %> <!--* msg set in session -->
+                    <div class="alert alert-dismissible fade show alert-<%= message.type %>" role="alert">
+                        <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="close"></button>
+                        <strong>
+                            <%= message.message %>
+                        </strong>
+                    </div>
+                    <% } %>
+
+                        <div class="table-responsive">
+                            <% if (users !='' ) { %>
+                                <table class="table table-striped text-center my-5" style="min-height: auto;">
+                                    <thead>
+                                        <tr class="table-dark">
+                                            <th>ID</th>
+                                            <th>Pan</th> <!--*-->
+                                            <th>Name</th>
+                                            <th>E-Mail</th>
+                                            <th>Phone</th>
+                                            <th>DOB</th> <!--*-->
+                                            <th>Unit</th> <!--*-->
+                                            <th>Paid</th> <!--*-->
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+                                        <% users.forEach((user, idx)=> { %>
+                                            <tr class="align-middle">
+                                                <td>
+                                                    <%= idx + 1 %>
+                                                </td>
+                                                <td>
+                                                    <%= user.pan %>
+                                                </td>
+                                                <td>
+                                                    <%= user.name.substring(0, 15) %>
+                                                </td>
+                                                <td>
+                                                    <%= user.email.substring(0, 20) %>
+                                                </td>
+                                                <td>
+                                                    <%= user.phone %>
+                                                </td>
+                                                <td>
+                                                    <%= user.dob.toLocaleDateString() %>
+                                                </td>
+                                                <td>
+                                                    <%= user.unit.substring(0, 22) %>
+                                                </td>
+                                                <td>
+                                                    <% if (user.paid==false) { %>
+                                                        <img src="images/logo/notPaid.png" width="35px" alt=""></a>
+                                                    <% } else { %>
+                                                        <img src="images/logo/paid.png" width="35px" alt=""></a>
+                                                    <% } %>
+                                                </td>
+                                                <td>
+                                                    <a href="/edit/<%= user._id %>" class="text-success">
+                                                        <img src="images/logo/create.png" width="35px" alt=""></a>
+                                                    <a href="/delete/<%= user._id %>" class="text-danger">
+                                                        <img src="images/logo/trash.png" width="35px" alt="">
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            <% }) %>
+                                    </tbody>
+                                </table>
+                                <% } else { %>
+                                    <div class="d-flex flex-column align-items-center justify-content-center"
+                                        style="min-height: 50vh;">
+                                        <h1 class="text-center text-secondary mt-5">
+                                            Create New User 🙋‍♀️ 🔥
+                                        </h1>
+                                        <button onclick="location.href = '/add';" type="button"
+                                            class="w-25 d-inline btn btn-info mt-3">
+                                            Create
+                                        </button>
+                                    </div>
+                                    <% } %>
+                        </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <button onclick="location.href = '/convertToExcel';" class="button-57" role="button">
+            <span class="text">
+                Convert to
+                <img src="/images/logo/excel.png" width="25px" alt="logo">
+            </span>
+            <span>
+                Downloading
+                ...
+            </span>
+        </button>
+    </div>
+
+
+    <%- include('../partials/footer') %>
